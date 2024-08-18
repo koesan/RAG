@@ -92,7 +92,6 @@ Retrieval katmanının temel amacı, kullanıcının sorduğu soruya en uygun ve
 
 İlk adımda, log dosyasındaki verilerin bir vektör veri tabanına yüklenmesi gerekmektedir. Bu işlem için öncelikle veri setindeki veriler alınır, ardından uygun şekilde işlenir ve temizlenir. İşlenmiş veriler, daha sonra vektör formatına dönüştürülerek vektör veri tabanına eklenir. Bu adım, verilerin daha sonra yapılacak sorgulamalara hızlı ve etkili bir şekilde yanıt verebilmesi için gereklidir.
 
-<br><br>
 > [!NOTE]
 > Useragents.py dosyası verileri weblog_sample dan çeker verileri temizler, uygun formata getirir ve bir liste olarak döndürür
 
@@ -119,30 +118,30 @@ book = FAISS.from_documents(documents, embeddings)
    
 book.save_local("library") # İstenirse vektör veritabanı local bilgisayara kaydedilebilir.
 ```
-<br><br>
 > [!NOTE]
 > Vektör veri tabanına yüklenen veriler lokalde kaydedilir. Bu sayede, sürekli olarak veri çekme, bölme ve vektörlere çevirme işlemleri tekrarlanmaz ve bu işlemlerle zaman kaybedilmez.
 
-Embeddings modeli, RAG sisteminde kritik bir role sahiptir. Metinlerin anlamsal temsillerinin ne kadar doğru yapıldığını belirler. Eğer embedding modeli güçlü ve etkiliyse, benzer anlamlara sahip metin parçaları vektör uzayında birbirine yakın vektörlerle temsil edilir. 
-Bu da, FAISS gibi vektör veri tabanlarında bu metin parçalarının doğru bir şekilde gruplandırılmasını sağlar. Bu süreç, yalnızca performansı artırmakla kalmaz, aynı zamanda sorguya en uygun verilerin doğru konumlandırılmasıyla arama işleminin doğruluğunu ve etkinliğini de garanti eder. 
+Embeddings modeli, RAG sisteminde kritik bir role sahiptir çünkü metinlerin anlamsal temsillerinin doğruluğunu belirler. Eğer embedding modeli güçlü ve etkiliyse, benzer anlamlara sahip metin parçaları vektör uzayında birbirine yakın vektörlerle temsil edilir. Bu, FAISS gibi vektör veri tabanlarında bu metin parçalarının doğru bir şekilde gruplandırılmasını sağlar. Böylece, sorguya en uygun veriler doğru konumlandırılır, bu da arama işleminin doğruluğunu ve etkinliğini garanti eder. Bu süreç, yalnızca sistemin performansını artırmakla kalmaz, aynı zamanda kullanıcıya daha isabetli sonuçlar sunar.
 
-HuggingFaceEmbeddings modelini seçmemin nedenleri arasında güçlü API desteği, ücretsiz erişim ve yüksek performans yer alıyor.
+> [!NOTE]
+> HuggingFaceEmbeddings modelini seçmemin nedenleri arasında güçlü API desteği, ücretsiz erişim ve yüksek performans yer alıyor.
 
 <br><br>
 ### 3.3 Generation (Üretim):
 
-RAG sisteminde kullanılan LLM modelinin başarısı, üretilecek sonuçların doğruluğunu ve anlamlılığını doğrudan etkiler. Uygun modeller için "https://huggingface.co/" sayfasından arama yapabilirsiniz. Bu projede, en uygun model olan "google/flan-t5-large" modelini kullandım. GPT gibi büyük dil modelleri her ne kadar başarılı olsa da, ücretli oldukları için kullanamadım. 
-"google/flan-t5-xxl" gibi modeller ise API bağlantı sorunları nedeniyle tercih etmedim. Performans açısından en uygun model olarak "google/flan-t5-large" modelinde karar kıldım.
+RAG sisteminde kullanılan LLM (Büyük Dil Modeli) modelinin başarısı, üretilen sonuçların doğruluğunu ve anlamlılığını doğrudan etkiler. Uygun modelleri bulmak için "https://huggingface.co/" sayfasından arama yapabilirsiniz. Bu projede, performans ve uygunluk açısından en iyi seçenek olarak "google/flan-t5-large" modelini kullandım. Her ne kadar GPT gibi büyük dil modelleri oldukça başarılı olsa da, ücretli oldukları için bu projede kullanamadım. 
+"google/flan-t5-xxl" gibi daha büyük modeller ise HuggingFaceHub APİ bağlantı sorunları nedeniyle tercih edilmedi(google/flan-t5-xxl Modelini local.py üzerinde çalıştırabilirsiniz). Sonuç olarak, performans ve erişilebilirlik açısından en uygun model olarak "google/flan-t5-large" modelinde karar kıldım.
+```
+from langchain_community.llms import HuggingFaceHub
 
-    from langchain_community.llms import HuggingFaceHub
-    
-    os.environ["HUGGINGFACEHUB_API_TOKEN"] = "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"
-    
-    llm = HuggingFaceHub(repo_id="google/flan-t5-large", model_kwargs={"temperature": 0.7, "max_length": 512})
+os.environ["HUGGINGFACEHUB_API_TOKEN"] = "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"
 
+llm = HuggingFaceHub(repo_id="google/flan-t5-large", model_kwargs={"temperature": 0.7, "max_length": 512})
+```
 Embedding kısmında yine ücretsiz ve kurulumu kolay olan HuggingFaceEmbeddings’i kullanmaya karar verdim. Bu sayede, projeyi kullanacak diğer insanlar için de pratik bir çözüm sunmuş oldum.
+<br><br>
 
-RAG Yapısının Çalıştırılması
+### 3.4 RAG Yapısının Çalıştırılması
 
 RAG yapısını çalıştırmak için öncelikle öncelikle veriler lokalde saklandıysa, localdeki verileri vektör veri setlerinin yüklenmesi gerekiyor:
 
