@@ -4,8 +4,7 @@
 
 Web trafik loglarını içeren veri setini bulmak için çeşitli kaynaklardan faydalandım. Bu kapsamda, Kaggle'da bulduğumuz ve Apache web sunucusu loglarını içeren veri setini tercih ettim. Bu veri seti, çeşitli log girdilerini kapsamlı bir şekilde içermektedir ve proje için uygun nitelikte verilere sahiptir.
 
-Kullanılan Veri Seti: 
-Link: https://www.kaggle.com/datasets/kimjmin/apache-web-log
+- **Kullanılan Veri Seti**: [Apache Web Server Access Logs](https://www.kaggle.com/datasets/kimjmin/apache-web-log)
 
 Bu veri seti, Apache web sunucusundan alınmış log kayıtlarını içerir ve IP adresleri, erişilen sayfalar, zaman damgaları gibi bilgileri içermektedir. Veri setinin içeriği, projede ihtiyaç duyduğumuz bilgileri sağlamaktadır.
 
@@ -19,18 +18,17 @@ Veri setini seçtikten sonra, öncelikle verilerin içeriğini incelememiz gerek
 
 Örnek bir log kaydı:
 
-	14.49.42.25 - - [12/May/2022:01:24:44 +0000] "GET /articles/ppp-over-ssh/ HTTP/1.1" 200 18586 "-" "Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.2b1) Gecko/20091014 Firefox/3.6b1 GTB5
-
+\`\`\`
+14.49.42.25 - - [12/May/2022:01:24:44 +0000] "GET /articles/ppp-over-ssh/ HTTP/1.1" 200 18586 "-" "Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.2b1) Gecko/20091014 Firefox/3.6b1 GTB5"
+\`\`\`
+	
 Bu kayıtta yer alan bilgiler:
 
-	14.49.42.25 : İstemcinin IP adresi
-	- - : Kullanıcı kimliğini gösteren alan, ancak boş
-	[12/May/2022:01:24:44 +0000] : İsteğin yapıldığı tarih ve saat
-	"GET /articles/ppp-over-ssh/ HTTP/1.1" : HTTP isteğinin içeriği
-	200 : Sunucunun yanıt durumu kodu
-	18586 : Sunucunun istemciye gönderdiği veri boyutu
-	"-" : İsteği yönlendiren URL'yi gösteren bölüm
-	"Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.2b1) Gecko/20091014 Firefox/3.6b1 GTB5"; 16 subscribers; feed-id=3389821348893992437)" : User-Agent bilgileri
+- **IP Adresi**: `14.49.42.25`
+- **Tarih ve Saat**: `[12/May/2022:01:24:44 +0000]`
+- **HTTP İsteği**: `"GET /articles/ppp-over-ssh/ HTTP/1.1"`
+- **Durum Kodu ve Veri Boyutu**: `200 18586`
+- **User-Agent Bilgileri**: `"Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.2b1) Gecko/20091014 Firefox/3.6b1 GTB5"`
 
 Farklı log dosyalarında farklı veriler olabilir.
 
@@ -38,16 +36,17 @@ Farklı log dosyalarında farklı veriler olabilir.
 
 Modelin daha iyi performans vere bilmesi için veri setindeki gereksiz verileri temizlemeliyiz. Bu nedenle, hangi verilerin kullanılabilir olduğuna karar verilmeli:
 
--  IP Adresi (14.49.42.25): IP adresi kullanılarak olası tehditler tespit edilebilir. Ancak bu projede gerekli olmadığını düşündüğümden dolayı IP adresini kullanmamaya karar verdim.
--  -*-: Veri olmadığı için bu alanı sildim.
--  Tarih ve Saat ([12/May/2022:01:24:44 +0000]): 12 Mayıs ile 7 Haziran arasındaki veriler bulunuyor. Model 17 Temmuz 2023'te güncellendiğinden, 2022 tarihli bilgilerin içeriyor olması cevabı etkiliyeceğini düşündüğümdne almadım.
--  HTTP İsteği ("GET /articles/ppp-over-ssh/ HTTP/1.1"): Proje için anlamlı olmadığından kullanmamaya karar verdim.
--  Durum Kodu ve Veri Boyutu (200, 18586): Sunucu yanıtı ve veri boyutunun proje için kullanmaya gerek olmadığını düşündüğümden bu verileri de temizledim.
--  Otomatik Tarayıcılar ve Bozuk Veriler: Bazı otomatik tarayıcılar, botlar veya bozuk veriler anlamlı bilgi içermediği için bunları da veri setinden çıkardım.
+- **IP Adresi (14.49.42.25): IP adresi kullanılarak olası tehditler tespit edilebilir. Ancak bu projede gerekli olmadığını düşündüğümden dolayı IP adresini kullanmamaya karar verdim.
+- **-*-: Veri olmadığı için bu alanı sildim.
+- **Tarih ve Saat ([12/May/2022:01:24:44 +0000]): 12 Mayıs ile 7 Haziran arasındaki veriler bulunuyor. Model 17 Temmuz 2023'te güncellendiğinden, 2022 tarihli bilgilerin içeriyor olması cevabı etkiliyeceğini düşündüğümdne almadım.
+- **HTTP İsteği ("GET /articles/ppp-over-ssh/ HTTP/1.1"): Proje için anlamlı olmadığından kullanmamaya karar verdim.
+- **Durum Kodu ve Veri Boyutu (200, 18586): Sunucu yanıtı ve veri boyutunun proje için kullanmaya gerek olmadığını düşündüğümden bu verileri de temizledim.
+- **Otomatik Tarayıcılar ve Bozuk Veriler: Bazı otomatik tarayıcılar, botlar veya bozuk veriler anlamlı bilgi içermediği için bunları da veri setinden çıkardım.
 
 Bu işlemler yapıldıktan sonra aşağıdaki gibi bir veri yapısı oldu.
-
-	Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.2b1) Gecko/20091014 Firefox/3.6b1 GTB5"; 16 subscribers; feed-id=3389821348893992437)
+\`\`\`
+Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.2b1) Gecko/20091014 Firefox/3.6b1 GTB5"; 16 subscribers; feed-id=3389821348893992437)
+\`\`\`
 
 Bu veri üzerinde RAG yapısını kurup defalarca test ettiğimde sonuçların istediğim ölçüde başarılı olmadığını gözlemledim. Başarıyı artırmak için öncelikle veri yapsını elden geçridim ve "user_agents" kütüphanesini kullanarak verileri düzeltmeye kararvedim.
 
