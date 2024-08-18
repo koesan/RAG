@@ -65,26 +65,17 @@ Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.2b1) Gecko/20091014 Firef
 > düzeltmeye karar verdim.
 >
 >"user_agents": User-Agent verilerini analiz etmek ve bu verilerilerden çeşitli bilgiler çıkarmak için kullanılan bir kütüphanedir.
-
-bu kütüphane ile user-agents verilerindeki istediğim verileri alarak veri setini düzelttim ve sonuç olarak aşağıdaki gibi bir veri yapsını elde ettim.
-
-```
-"Browser": "Firefox Beta", "Browser Version": "3.6.b1", "Operating System": "Windows"
-```
-
-Bu verilerde kullanılan tarayıcı, tarayıcı versiyonu, işletim sistemi, sistem dili bilgileri etiketli bir şekilde kullanıla bilecek.
-
-Veri setini bu hale getirmek RAG yapısında gözle görlülür ölçüde İyileştirmeyi başardım.
-
-***Not: Bu temizlik işlemlerinin tamamı useragents modülü içerisinde geçekleştirilecek***
-
-Sonuç olarak, elimde şu şekilde temizlenmiş bir veri kaldı:
+<br><br>
+user-agents kütüphanesi ile user-agents verilerindeki, istediğim verileri alarak veri setini düzelttim ve sonuç olarak aşağıdaki gibi bir veri yapsını elde ettim.
 
 ```
 "Browser": "Firefox Beta", "Browser Version": "3.6.b1", "Operating System": "Windows"
 ```
 
-Elimdeki veri setinde 300.000 satır veri vardı temizleme işleminden sonra 229561 satır veri kadlı.
+Veri setini bu hale getirmek gereksiz verileri temizledim ve RAG yapısında gözle görlülür ölçüde İyileştirmeyi başardım.
+
+> [!NOTE]
+> Bu temizlik işlemlerinin tamamı useragents.py modülü içerisinde gerçekleştiriliyor
 
 ****
 
