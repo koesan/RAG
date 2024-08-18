@@ -13,7 +13,7 @@ Bu veri seti, Apache web sunucusundan alınmış log kayıtlarını içerir ve I
 
 Veri setini seçtikten sonra, öncelikle verilerin içeriğini incelememiz gerekir.
 
-* 2.1 Verileri İnceleme:
+- 2.1 Verileri İnceleme:
 
 Örnek bir log kaydı:
 
