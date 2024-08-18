@@ -17,7 +17,7 @@ Bu veri seti, Apache web sunucusundan alınmış log kayıtlarını içerir ve I
 ## 2. Veri Ön İşleme:
 
 Veri setini seçtikten sonra, öncelikle verilerin içeriğini incelememiz gerekir.
-
+<br><br>
 ### 2.1 Verileri İnceleme:
 
 Örnek bir log kaydı:
@@ -36,9 +36,7 @@ Veri setini seçtikten sonra, öncelikle verilerin içeriğini incelememiz gerek
 | **User-Agent**                | "Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.2b1) Gecko/20091014 Firefox/3.6b1 GTB5; 16 subscribers; feed-id=3389821348893992437)" |
 
 
-
-Farklı log dosyalarında farklı veriler olabilir.
-
+<br><br>
 ### 2.2 Kullanılacak Verileri Seçme:
 
 Modelin daha iyi performans vere bilmesi için veri setindeki gereksiz verileri temizlemeliyiz. Bu nedenle, hangi verilerin kullanılabilir olduğuna karar verilmeli:
