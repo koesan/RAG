@@ -17,7 +17,9 @@ Bu veri seti, Apache web sunucusundan alınmış log kayıtlarını içerir ve I
 ## 2. Veri Ön İşleme:
 
 Veri setini seçtikten sonra, öncelikle verilerin içeriğini incelememiz gerekir.
+
 <br><br>
+
 ### 2.1 Verileri İnceleme:
 
 Örnek bir log kaydı:
@@ -37,6 +39,7 @@ Veri setini seçtikten sonra, öncelikle verilerin içeriğini incelememiz gerek
 
 
 <br><br>
+
 ### 2.2 Kullanılacak Verileri Seçme:
 
 Modelin daha iyi performans vere bilmesi için veri setindeki gereksiz verileri temizlemeliyiz. Bu nedenle, hangi verilerin kullanılabilir olduğuna karar verilmeli:
