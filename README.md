@@ -43,7 +43,7 @@ Modelin daha iyi performans vere bilmesi için veri setindeki gereksiz verileri 
 * Durum Kodu ve Veri Boyutu (200, 18586): Sunucu yanıtı ve veri boyutunun proje için kullanmaya gerek olmadığını düşündüğümden bu verileri de temizledim.
 * Otomatik Tarayıcılar ve Bozuk Veriler: Bazı otomatik tarayıcılar, botlar veya bozuk veriler anlamlı bilgi içermediği için bunları da veri setinden çıkardım.
 
-*Bu temizlik işlemlerinin tamamı useragents modülü içerisinde geçekleştirilecek*
+***Bu temizlik işlemlerinin tamamı useragents modülü içerisinde geçekleştirilecek***
 
 Sonuç olarak, elimde şu şekilde temizlenmiş bir veri kaldı:
 
