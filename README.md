@@ -8,6 +8,10 @@ Kullanılan Veri Seti: https://www.kaggle.com/datasets/kimjmin/apache-web-log
 
 Bu veri seti, Apache web sunucusundan alınmış log kayıtlarını içerir ve IP adresleri, erişilen sayfalar, zaman damgaları gibi bilgileri içermektedir. Veri setinin içeriği, projede ihtiyaç duyduğumuz bilgileri sağlamaktadır.
 
+> [!NOTE]
+> Not: Doğru veri seti seçimi önemlidir projeyi hazırlarken farklı bir veri seti üzerinde çalışma yapıyordum. veri setini düzgün incelemediğimden veri setinin yapay zeka tarafından hazırlanan bir log dosyası olduğunu anlmaadım buda ilk başta
+> kurudğum modelin yanlış sonuçlar üretmesine sebeb oldu. ilk başta sorunun veri setinden kaynaklandığını anlamadığımdan uzun bir süre bunu çözmeye uğraştım.
+
 ---
 
 ## 2. Veri Ön İşleme:
