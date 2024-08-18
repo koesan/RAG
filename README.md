@@ -75,56 +75,55 @@ Elimdeki veri setinde 300.000 satır veri vardı temizleme işleminden sonra 229
 
 RAG (Retrieval-Augmented Generation) iki ana yapıdan oluşur: Retrieval (Bilgi Getirme) ve Generation (Üretim).
 
-Retrieval (Bilgi Getirme):
+### Retrieval (Bilgi Getirme):
 
 Bu katmanın esas amacı, vektör veri tabanında soruya en uygun verileri getirmektir.
 
-3.1 Verilerin İşlenmesi:
+### 3.1 Verilerin İşlenmesi:
 
 İlk adımda, veri setindeki veriler alınır ve işlenir.
 
-Bu kod verileri weblog_sample dan çeker ve useragents modülünde temizler ve bir liste olarak döndürür. 
+***Useragents.py dosyası verileri weblog_sample dan çeker verileri temizler, uygun formata getirir ve bir liste olarak döndürür.***
 
 LLM (Large Language Model) modelleri, belirli bir maksimum uzunlukta metin üzerinde çalışabilir. Bu uzunluğu aştığında, fazlalık kısmı görmezden gelir ve bu da sonuçların istenildiği gibi olmamasına ve modelin performans kaybına yol açar.
-Bu nedenle, veri setindeki veriler LLM'nin işleyebileceği uzunluğa getirmek için her bir satırı listenin bir elemanı olarak ayarladım buda listedeki her indexte max 150 min 80 karakter olacağı anlamına geliyor.
+Bu nedenle, veri setindeki veriler LLM'nin işleyebileceği uzunluğa getirmek için her bir satırı listenin bir elemanı olarak ayarladım buda listedeki her indexte max 150, min 80 karakter olacağı anlamına geliyor.
 
-documents = useragents.process_log_files_to_list("weblog_sample.log")
+	documents = useragents.process_log_files_to_list("weblog_sample.log")
 
 Bu listeyi Document nesnelerine dönüştürerek gereksiz boşlukları temizler ve boş satırları atlar. Bu sayede, işlenmiş veriler Document sınıfı formatında saklanır, bu da ilerideki işlemler için uygun bir yapı sağlar.
 
-documents = [Document(page_content=line.strip()) for line in documents if line.strip()]
+	documents = [Document(page_content=line.strip()) for line in documents if line.strip()]
 
-
-3.2 Embedding ile Vektörlere Dönüştürme:
+### 3.2 Embedding ile Vektörlere Dönüştürme:
 
 Kesilen veriler, embedding işlemi ile sayısal vektörlere dönüştürülür. Bu sayede metinlerin anlamsal içeriği vektör uzayında temsil edilir ve benzerlik aramaları bu vektörler üzerinde yapılır. Ardından, elde edilen vektörler FAISS Vektör Veri Tabanına yüklenir.
 
-from langchain_community.vectorstores import FAISS
-from langchain_community.embeddings import HuggingFaceEmbeddings
-
-embeddings = HuggingFaceEmbeddings()
-
-book = FAISS.from_documents(documents, embeddings)
-
-Vektör veri tabanına yüklenen veriler lokalde kaydedilir. Bu sayede sürekli veri çekme, bölme ve vektörlere çevirme işlemleri tekrarlanmaz ve sorgulama işlemleri hızlanır.
-
-book.save_local("library")
+	from langchain_community.vectorstores import FAISS
+	from langchain_community.embeddings import HuggingFaceEmbeddings
+	
+	embeddings = HuggingFaceEmbeddings()
+	
+	book = FAISS.from_documents(documents, embeddings)
+	
+	Vektör veri tabanına yüklenen veriler lokalde kaydedilir. Bu sayede sürekli veri çekme, bölme ve vektörlere çevirme işlemleri tekrarlanmaz ve sorgulama işlemleri hızlanır.
+	
+	book.save_local("library") # İstenirse vektör veritabanı local bilgisayara kaydedilebilir.
 
 Embeddings modeli, RAG sisteminde kritik bir role sahiptir. Metinlerin anlamsal temsillerinin ne kadar doğru yapıldığını belirler. Eğer embedding modeli güçlü ve etkiliyse, benzer anlamlara sahip metin parçaları vektör uzayında birbirine yakın vektörlerle temsil edilir. 
 Bu da, FAISS gibi vektör veri tabanlarında bu metin parçalarının doğru bir şekilde gruplandırılmasını sağlar. Bu süreç, yalnızca performansı artırmakla kalmaz, aynı zamanda sorguya en uygun verilerin doğru konumlandırılmasıyla arama işleminin doğruluğunu ve etkinliğini de garanti eder. 
+
 HuggingFaceEmbeddings modelini seçmemin nedenleri arasında güçlü API desteği, ücretsiz erişim ve yüksek performans yer alıyor.
 
-3.3 Generation (Üretim):
+### 3.3 Generation (Üretim):
 
 RAG sisteminde kullanılan LLM modelinin başarısı, üretilecek sonuçların doğruluğunu ve anlamlılığını doğrudan etkiler. Uygun modeller için "https://huggingface.co/" sayfasından arama yapabilirsiniz. Bu projede, en uygun model olan "google/flan-t5-large" modelini kullandım. GPT gibi büyük dil modelleri her ne kadar başarılı olsa da, ücretli oldukları için kullanamadım. 
 "google/flan-t5-xxl" gibi modeller ise API bağlantı sorunları nedeniyle tercih etmedim. Performans açısından en uygun model olarak "google/flan-t5-large" modelinde karar kıldım.
 
-from langchain_community.llms import HuggingFaceHub
-
-os.environ["HUGGINGFACEHUB_API_TOKEN"] = "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"
-
-# Language model
-llm = HuggingFaceHub(repo_id="google/flan-t5-large", model_kwargs={"temperature": 0.7, "max_length": 512})
+	from langchain_community.llms import HuggingFaceHub
+	
+	os.environ["HUGGINGFACEHUB_API_TOKEN"] = "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"
+	
+	llm = HuggingFaceHub(repo_id="google/flan-t5-large", model_kwargs={"temperature": 0.7, "max_length": 512})
 
 Embedding kısmında yine ücretsiz ve kurulumu kolay olan HuggingFaceEmbeddings’i kullanmaya karar verdim. Bu sayede, projeyi kullanacak diğer insanlar için de pratik bir çözüm sunmuş oldum.
 
@@ -132,29 +131,28 @@ RAG Yapısının Çalıştırılması
 
 RAG yapısını çalıştırmak için öncelikle öncelikle veriler lokalde saklandıysa, localdeki verileri vektör veri setlerinin yüklenmesi gerekiyor:
 
-library = FAISS.load_local("book", embeddings, allow_dangerous_deserialization=True)
+	library = FAISS.load_local("book", embeddings, allow_dangerous_deserialization=True)
 
 Ardından, dil modeli ve bilgi getirme mekanizmasını bir araya getirmeliyiz. Böylece soru sorulduğunda, bilgi getirme mekanizması en uygun verileri arar ve dil modeli bu verilerle bir yanıt oluşturur.
 
-chainSim = RetrievalQA.from_chain_type(
-    llm=llm,
-    chain_type="stuff", 
-    retriever=library.as_retriever()		
-)
+	chainSim = RetrievalQA.from_chain_type(
+	    llm=llm,
+	    chain_type="map_reduce", 
+	    retriever=library.as_retriever()		
+	)
 
-chain_type: 
-	stuff: Basit ve hızlı bilgi getirme ve yanıt oluşturma için.
-	map_reduce: Büyük veri kümesi üzerinde paralel işleme için.
-	refine: İlk yanıtı iteratif olarak geliştirmek için.
-	map_rerank: Bilgi parçalarını sıralamak ve en uygun sonuçları seçmek için.
+	chain_type: 
+		stuff: Basit ve hızlı bilgi getirme ve yanıt oluşturma için.
+		map_reduce: Büyük veri kümesi üzerinde paralel işleme için.
+		refine: İlk yanıtı iteratif olarak geliştirmek için.
+		map_rerank: Bilgi parçalarını sıralamak ve en uygun sonuçları seçmek için.
 
 
 Son olarak, sorgumuzu yapıya aktararak çıktıyı alabiliriz:
 
-chainSim.invoke(question)
+	chainSim.invoke(question)
 
-
-4. Değerlendirme.
+## 4. Değerlendirme.
 
 Veri setini bulduktan, veriyi hazırladıktan ve RAG yapısını kurduktan sonra, en zorlu ve zaman alıcı aşama bu RAG yapısının doğruluğunu test etmek, yani ürettiği sonuçların ne kadar doğru ve ne kadar yanlış olduğunu belirlemektir.
 
