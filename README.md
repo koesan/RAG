@@ -72,7 +72,7 @@ user-agents kütüphanesi ile user-agents verilerindeki, istediğim verileri ala
 "Browser": "Firefox Beta", "Browser Version": "3.6.b1", "Operating System": "Windows"
 ```
 
-Veri setini bu hale getirmek gereksiz verileri temizledim ve RAG yapısında gözle görlülür ölçüde İyileştirmeyi başardım.
+Veri setini bu hale getirerek gereksiz verileri temizledim ve RAG yapısında gözle görlülür ölçüde İyileştirmeyi başardım.
 
 > [!NOTE]
 > Bu temizlik işlemlerinin tamamı useragents.py modülü içerisinde gerçekleştiriliyor
@@ -83,26 +83,30 @@ Veri setini bu hale getirmek gereksiz verileri temizledim ve RAG yapısında gö
 
 RAG (Retrieval-Augmented Generation) iki ana yapıdan oluşur: Retrieval (Bilgi Getirme) ve Generation (Üretim).
 
-### Retrieval (Bilgi Getirme):
+### 3.1 Retrieval (Bilgi Getirme):
 
 Bu katmanın esas amacı, vektör veri tabanında soruya en uygun verileri getirmektir.
 
-### 3.1 Verilerin İşlenmesi:
+<br><br>
+### 3.1.1 Verilerin İşlenmesi:
 
 İlk adımda, veri setindeki veriler alınır ve işlenir.
 
-***Useragents.py dosyası verileri weblog_sample dan çeker verileri temizler, uygun formata getirir ve bir liste olarak döndürür.***
+<br><br>
+> [!NOTE]
+> Useragents.py dosyası verileri weblog_sample dan çeker verileri temizler, uygun formata getirir ve bir liste olarak döndürür
 
 LLM (Large Language Model) modelleri, belirli bir maksimum uzunlukta metin üzerinde çalışabilir. Bu uzunluğu aştığında, fazlalık kısmı görmezden gelir ve bu da sonuçların istenildiği gibi olmamasına ve modelin performans kaybına yol açar.
 Bu nedenle, veri setindeki veriler LLM'nin işleyebileceği uzunluğa getirmek için her bir satırı listenin bir elemanı olarak ayarladım buda listedeki her indexte max 150, min 80 karakter olacağı anlamına geliyor.
 
-    documents = useragents.process_log_files_to_list("weblog_sample.log")
+`documents = useragents.process_log_files_to_list("weblog_sample.log")`
 
 Bu listeyi Document nesnelerine dönüştürerek gereksiz boşlukları temizler ve boş satırları atlar. Bu sayede, işlenmiş veriler Document sınıfı formatında saklanır, bu da ilerideki işlemler için uygun bir yapı sağlar.
 
-    documents = [Document(page_content=line.strip()) for line in documents if line.strip()]
+`documents = [Document(page_content=line.strip()) for line in documents if line.strip()]`
 
-### 3.2 Embedding ile Vektörlere Dönüştürme:
+<br><br>
+### 3.1.2 Embedding ile Vektörlere Dönüştürme:
 
 Kesilen veriler, embedding işlemi ile sayısal vektörlere dönüştürülür. Bu sayede metinlerin anlamsal içeriği vektör uzayında temsil edilir ve benzerlik aramaları bu vektörler üzerinde yapılır. Ardından, elde edilen vektörler FAISS Vektör Veri Tabanına yüklenir.
 
@@ -122,6 +126,7 @@ Bu da, FAISS gibi vektör veri tabanlarında bu metin parçalarının doğru bir
 
 HuggingFaceEmbeddings modelini seçmemin nedenleri arasında güçlü API desteği, ücretsiz erişim ve yüksek performans yer alıyor.
 
+<br><br>
 ### 3.3 Generation (Üretim):
 
 RAG sisteminde kullanılan LLM modelinin başarısı, üretilecek sonuçların doğruluğunu ve anlamlılığını doğrudan etkiler. Uygun modeller için "https://huggingface.co/" sayfasından arama yapabilirsiniz. Bu projede, en uygun model olan "google/flan-t5-large" modelini kullandım. GPT gibi büyük dil modelleri her ne kadar başarılı olsa da, ücretli oldukları için kullanamadım. 
