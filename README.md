@@ -170,15 +170,12 @@ Bu değerlendirme sürecini daha objektif ve ölçülebilir kılmak için çeşi
 
 Kendi projemde, modelin verdiği cevapları manuel olarak inceleyip, doğruluğunu değerlendirerek karar verdim. Bunun için 5 tane soru oluşturdum ve modele sordum ve cevaplarını aldım ayrıca aynı soruları mase modelede sordum ve onunda cevaplarını aldım.
 
-
-						Oluşturduğum RAG 																									Base LLM
-
-{'query': 'What is the latest version of the Chrome browser used on MacOS X?', 'result': '35.0.1870'}					  					 v 5.0 
-{'query': 'What is the version of the Firefox browser used on a Windows operating system with version 7?', 'result': '3.6'}				   Firefox 7.0
-{'query': 'What is the most widely used operating system on computers?', 'result': 'Windows'}												windows
-{'query': 'Which is the most used browser?', 'result': 'IE'}																			  google chrome
-{'query': 'How are missing data labeled?', 'result': 'Unknown'}														The following is a list of the ten most common sex-related disorders
-
+							Oluşturduğum RAG 													Base LLM																									
+	{'query': 'What is the latest version of the Chrome browser used on MacOS X?', 'result': '35.0.1870'}					  				 v 5.0 
+	{'query': 'What is the version of the Firefox browser used on a Windows operating system with version 7?', 'result': '3.6'}				   	       Firefox 7.0
+	{'query': 'What is the most widely used operating system on computers?', 'result': 'Windows'}									       	 windows
+	{'query': 'Which is the most used browser?', 'result': 'IE'}													      google chrome
+	{'query': 'How are missing data labeled?', 'result': 'Unknown'}										 The following is a list of the ten most common sex-related disorders
 
 Sonuçların Değerlendirilmesi ve Başarıyı Artırma:
 
