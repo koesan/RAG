@@ -21,7 +21,7 @@ Veri setini seçtikten sonra, öncelikle verilerin içeriğini incelememiz gerek
 
 Bu kayıtta yer alan bilgiler:
 
-	14.49.42.25 : İstemcinin IP adresi
+	14.49.42.25 : * İstemcinin IP adresi
 	- - : Kullanıcı kimliğini gösteren alan, ancak boş
 	[12/May/2022:01:24:44 +0000] : İsteğin yapıldığı tarih ve saat
 	"GET /articles/ppp-over-ssh/ HTTP/1.1" : HTTP isteğinin içeriği
