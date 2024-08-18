@@ -172,13 +172,17 @@ Son olarak, sorgumuzu yapıya aktararak çıktıyı alabiliriz:
 `
 chainSim.invoke(question)
 `
+> [!NOTE]
+> Yapıyı kurarken çeşitli sorunlarla karşılaştım ama en çok zamanımı alan sorun, önceden çalışan kodun sonradan çalıştırmaya çalışırken sürekli hata vermesiydi. Ne kadar çalışırsamda bu hatayı çözemedim. Son olarak, vektör veritabanını 
+> değiştirmeyi denediğimde sorunun çözüldüğünü fark ettim. Eğer kodunuz daha önce çalışıyorsa ama sonradan çalışmamaya başladıysa ve kodda bir sorun bulamıyorsanız, verilerinizi lokalde tutuyorsanız sorun büyük ihtimalle bu durumdadır. Kısacası, 
+> vektör veritabanını silin, verileri tekrar işleyin ve yeniden kaydedin.
 <br><br>
 
 ## 4. Değerlendirme.
 
 Veri setini bulduktan, veriyi hazırladıktan ve RAG yapısını kurduktan sonra, en zorlu ve zaman alıcı aşama bu RAG yapısının doğruluğunu test etmek, yani ürettiği sonuçların ne kadar doğru ve ne kadar yanlış olduğunu belirlemektir.
 
-Bu doğrulama işlemi için farklı yöntemler kullanılabilir, ancak temelde önemli olan şey, modelin verdiği cevabın ne kadar doğru olduğunu değerlendirmektir. Bu doğrulama için iki yaklaşım önerilebilir:
+Bu doğrulama işlemi için farklı yöntemler kullanılabilir, ancak temelde olan şey, modelin verdiği cevabın ne kadar doğru olduğunu değerlendirmektir. Bunun için iki yaklaşım önerilebilir:
 
 1. Manuel Değerlendirme: Soruları elle sorarak, modelin verdiği cevapları doğruluğuna göre değerlendirirsiniz.
 
@@ -186,18 +190,19 @@ Bu doğrulama işlemi için farklı yöntemler kullanılabilir, ancak temelde ö
 
 Bu değerlendirme sürecini daha objektif ve ölçülebilir kılmak için çeşitli metrikler kullanılır:
 
-    Doğruluk (Accuracy): Modelin verdiği doğru cevapların toplam sorulara oranıdır.
-    F1 Skoru: Modelin precision (kesinlik) ve recall (duyarlılık) değerlerinin harmonik ortalamasıdır. F1 Skoru, şu formülle hesaplanır: F1 Skoru = 2 * (precision * recall) / (precision + recall).
-    Kullanıcı Geri Bildirimi: Kullanıcıların modelin verdiği cevaplarla ilgili memnuniyetini ölçerek de doğruluk değerlendirmesi yapılabilir.
+* Doğruluk (Accuracy): Modelin verdiği doğru cevapların toplam sorulara oranıdır.
+* F1 Skoru: Modelin precision (kesinlik) ve recall (duyarlılık) değerlerinin harmonik ortalamasıdır. F1 Skoru, şu formülle hesaplanır: F1 Skoru = 2 * (precision * recall) / (precision + recall).
+* Kullanıcı Geri Bildirimi: Kullanıcıların modelin verdiği cevaplarla ilgili memnuniyetini ölçerek de doğruluk değerlendirmesi yapılabilir.
 
 Kendi projemde, modelin verdiği cevapları manuel olarak inceleyip, doğruluğunu değerlendirerek karar verdim. Bunun için 5 tane soru oluşturdum ve modele sordum ve cevaplarını aldım ayrıca aynı soruları mase modelede sordum ve onunda cevaplarını aldım.
 
-                    Oluşturduğum RAG                                                               Base LLM                                                                                                 
-    {'query': 'What is the latest version of the Chrome browser used on MacOS X?', 'result': '35.0.1870', Doğru}                                 v 5.0  (Yanlış)
-    {'query': 'What is the version of the Firefox browser used on a Windows operating system with version 7?', 'result': '3.6', Doğru}                    Firefox 7.0  (Yanlış)
-    {'query': 'What is the most widely used operating system on computers?', 'result': 'Windows', Doğru}                                         windows (Doğru)
-    {'query': 'Which is the most used browser?', 'result': 'IE', Yanlış}                                                      google chrome (Doğru)
-    {'query': 'How are missing data labeled?', 'result': 'Unknown', Doğru}                                   The following is a list of the ten most common sex-related disorders (Yanlış)
+| Sorgu                                                                                                             | Oluşturduğum RAG                           | Base LLM                   |
+|-------------------------------------------------------------------------------------------------------------------|--------------------------------------------|----------------------------|
+| **What is the latest version of the Chrome browser used on MacOS X?**                                             | `35.0.1870` (Doğru)                       | `v 5.0` (Yanlış)           |
+| **What is the version of the Firefox browser used on a Windows operating system with version 7?**                | `3.6` (Doğru)                             | `Firefox 7.0` (Yanlış)     |
+| **What is the most widely used operating system on computers?**                                                   | `Windows` (Doğru)                         | `windows` (Doğru)          |
+| **Which is the most used browser?**                                                                               | `IE` (Yanlış)                             | `google chrome` (Doğru)    |
+| **How are missing data labeled?**                                                                                   | `Unknown` (Doğru)                         | `The following is a list of the ten most common sex-related disorders` (Yanlış) |
 
 Sonuçları değerlendirdiğimizde, LLM modeli, log verilerinin kullanılması gerektiği sorularda tahmin edilebildiği gibi veri seti ile uyuşmayan, kısaca yanlış cevaplar verdiği gözlemlenmiştir. Sonuç olarak, RAG yapısı gözle görülür şekilde başarılı sonuçlar üretmektedir.
 
