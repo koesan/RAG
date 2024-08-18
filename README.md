@@ -171,24 +171,22 @@ Bu değerlendirme sürecini daha objektif ve ölçülebilir kılmak için çeşi
 Kendi projemde, modelin verdiği cevapları manuel olarak inceleyip, doğruluğunu değerlendirerek karar verdim. Bunun için 5 tane soru oluşturdum ve modele sordum ve cevaplarını aldım ayrıca aynı soruları mase modelede sordum ve onunda cevaplarını aldım.
 
 					Oluşturduğum RAG 														       Base LLM																									
-	{'query': 'What is the latest version of the Chrome browser used on MacOS X?', 'result': '35.0.1870'}					  				 v 5.0 
-	{'query': 'What is the version of the Firefox browser used on a Windows operating system with version 7?', 'result': '3.6'}				   	       Firefox 7.0
-	{'query': 'What is the most widely used operating system on computers?', 'result': 'Windows'}									       	 windows
-	{'query': 'Which is the most used browser?', 'result': 'IE'}													      google chrome
-	{'query': 'How are missing data labeled?', 'result': 'Unknown'}										 The following is a list of the ten most common sex-related disorders
+	{'query': 'What is the latest version of the Chrome browser used on MacOS X?', 'result': '35.0.1870', Doğru}				  				 v 5.0  (Yanlış)
+	{'query': 'What is the version of the Firefox browser used on a Windows operating system with version 7?', 'result': '3.6', Doğru}			   	      Firefox 7.0  (Yanlış)
+	{'query': 'What is the most widely used operating system on computers?', 'result': 'Windows', Doğru}								       	 windows (Doğru)
+	{'query': 'Which is the most used browser?', 'result': 'IE', Yanlış}												      google chrome (Doğru)
+	{'query': 'How are missing data labeled?', 'result': 'Unknown', Doğru}									 The following is a list of the ten most common sex-related disorders (Yanlış)
 
-Sonuçların Değerlendirilmesi ve Başarıyı Artırma:
+Sonuçları değerlendirdiğimizde, LLM modeli, log verilerinin kullanılması gerektiği sorularda tahmin edilebildiği gibi veri seti ile uyuşmayan, kısaca yanlış cevaplar verdiği gözlemlenmiştir. Sonuç olarak, RAG yapısı gözle görülür şekilde başarılı sonuçlar üretmektedir.
 
-Sonuçları değerlendirdiğimizde, log verilerinin kullanılması gerektiği sorularda tahmin edilebildiği gibi veri seti ile uyuşmayan, kısaca yanlış cevaplar verdiği gözlemlenmiştir. Sonuç olarak, RAG yapısı gözle görülür şekilde başarılı sonuçlar üretmektedir.
+## 5. Başarıyı artırma önerileri:
 
-Başarıyı artırma önerileri:
+* Veri Seti: Daha kapsamlı bir veri seti seçilmesi ve veri temizliğinin daha detaylı yapılması, modelin başarısını artıracaktır.
 
-Veri Seti: Daha kapsamlı bir veri seti seçilmesi ve veri temizliğinin daha detaylı yapılması, modelin başarısını artıracaktır.
+* LLM: GPT-4 gibi daha başarılı modellerin kullanılması, modelin çıktılarının kalitesini artıracak ve doğru sonuçlar elde edilmesini sağlayacaktır.
 
-LLM: GPT-4 gibi daha başarılı modellerin kullanılması, modelin çıktılarının kalitesini artıracak ve doğru sonuçlar elde edilmesini sağlayacaktır.
+* Embeddings: Embeddings verilerinin vektör datasete yüklenmesi ve uygun verilerin modele verilmesi önemlidir. Daha iyi embeddings modellerinin kullanılması, sonuçları olumlu yönde etkileyecektir.
 
-Embeddings: Embeddings verilerinin vektör datasete yüklenmesi ve uygun verilerin modele verilmesi önemlidir. Daha iyi embeddings modellerinin kullanılması, sonuçları olumlu yönde etkileyecektir.
+* Chain Type: stuff, map_reduce, refine, map_rerank gibi parametrelerle yapınıza uygun seçeneği kullanarak modelin daha iyi sonuçlar üretmesini sağlayabilirsiniz.
 
-Chain Type: stuff, map_reduce, refine, map_rerank gibi parametrelerle yapınıza uygun seçeneği kullanarak modelin daha iyi sonuçlar üretmesini sağlayabilirsiniz.
-
-as_retriever: search_type, top_k, filter gibi parametrelerle ince ayar yaparak yapının başarısını artırabilirsiniz.
+* as_retriever: search_type, top_k, filter gibi parametrelerle ince ayar yaparak yapının başarısını artırabilirsiniz.
