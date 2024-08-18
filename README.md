@@ -223,4 +223,4 @@ Sonuçları değerlendirdiğimizde, oluşturduğum RAG modeli 5 sorudan 4'üne i
 * Prompt: İyi yazılmış bir prompt modelin doğru ve alakalı yanıtlar vermesini sağlar. Eksik veya belirsiz bir prompt, modelin yanlış veya alakasız yanıtlar üretmesine neden olur. Daha iyi promptlar yazarak daha başarılı sonuçlar alınabilinir.
 
 > [!NOTE]
-> local.py Rag modelini istediğiniz LLM modeli ile kendi bilgisayarınızca çalıştırabilmeniz için. (HuggingFaceHub'da 10G model boyut sınırlaması mevcut)***
+> HuggingFaceHub'da 10G model boyutu sınırlandırılması olması sebebi ile locak bilgisayarda isteidğiniz model ile çalıştıra bileceğiniz local.py kodunu projeye ekledim.
