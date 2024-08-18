@@ -79,6 +79,7 @@ Sonuç olarak, elimde şu şekilde temizlenmiş bir veri kaldı:
     "Browser Version": "3.6.b1",
     "Operating System": "Windows"
 }
+```
 
 Elimdeki veri setinde 300.000 satır veri vardı temizleme işleminden sonra 229561 satır veri kadlı.
 
