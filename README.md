@@ -190,3 +190,6 @@ Sonuçları değerlendirdiğimizde, LLM modeli, log verilerinin kullanılması g
 * Chain Type: stuff, map_reduce, refine, map_rerank gibi parametrelerle yapınıza uygun seçeneği kullanarak modelin daha iyi sonuçlar üretmesini sağlayabilirsiniz.
 
 * as_retriever: search_type, top_k, filter gibi parametrelerle ince ayar yaparak yapının başarısını artırabilirsiniz.
+
+
+***Nont: local.py Rag modelini istediğiniz LLM modeli ile kendi bilgisayarınızca çalıştırabilmeniz için. (HuggingFaceHub'da 10G model boyut sınırlaması mevcut)***
