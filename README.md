@@ -24,11 +24,11 @@ Veri setini seçtikten sonra, öncelikle verilerin içeriğini incelememiz gerek
 	
 Bu kayıtta yer alan bilgiler:
 
-- **IP Adresi**: `14.49.42.25`**
-- **Tarih ve Saat**: `[12/May/2022:01:24:44 +0000]`**
-- **HTTP İsteği**: `"GET /articles/ppp-over-ssh/ HTTP/1.1"`**
-- **Durum Kodu ve Veri Boyutu**: `200 18586`**
-- **User-Agent Bilgileri**: `"Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.2b1) Gecko/20091014 Firefox/3.6b1 GTB5"`**
+- IP Adresi**: `14.49.42.25`
+- Tarih ve Saat**: `[12/May/2022:01:24:44 +0000]`
+- HTTP İsteği**: `"GET /articles/ppp-over-ssh/ HTTP/1.1"`
+- Durum Kodu ve Veri Boyutu**: `200 18586`
+- User-Agent Bilgileri**: `"Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.2b1) Gecko/20091014 Firefox/3.6b1 GTB5"`
 
 Farklı log dosyalarında farklı veriler olabilir.
 
