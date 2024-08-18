@@ -178,11 +178,11 @@ Kendi projemde, modelin verdiği cevapları manuel olarak inceleyip, doğruluğu
 
 Sonuçları değerlendirdiğimizde, LLM modeli, log verilerinin kullanılması gerektiği sorularda tahmin edilebildiği gibi veri seti ile uyuşmayan, kısaca yanlış cevaplar verdiği gözlemlenmiştir. Sonuç olarak, RAG yapısı gözle görülür şekilde başarılı sonuçlar üretmektedir.
 
-## 5. Başarıyı artırma önerileri:
+## 5. Kalitesini artırma önerileri:
 
 * Veri Seti: Daha kapsamlı bir veri seti seçilmesi ve veri temizliğinin daha detaylı yapılması, modelin başarısını artıracaktır.
 
-* LLM: GPT-4 gibi daha başarılı modellerin kullanılması, modelin çıktılarının kalitesini artıracak ve doğru sonuçlar elde edilmesini sağlayacaktır.
+* LLM: GPT gibi daha başarılı modellerin kullanılması, modelin çıktılarının kalitesini artıracak ve doğru sonuçlar elde edilmesini sağlayacaktır.
 
 * Embeddings: Embeddings verilerinin vektör datasete yüklenmesi ve uygun verilerin modele verilmesi önemlidir. Daha iyi embeddings modellerinin kullanılması, sonuçları olumlu yönde etkileyecektir.
 
@@ -190,5 +190,6 @@ Sonuçları değerlendirdiğimizde, LLM modeli, log verilerinin kullanılması g
 
 * as_retriever: search_type, top_k, filter gibi parametrelerle ince ayar yaparak yapının başarısını artırabilirsiniz.
 
+* Daha iyi prompt: İyi yazılmış bir prompt modelin doğru ve alakalı yanıtlar vermesini sağlar. Eksik veya belirsiz bir prompt, modelin yanlış veya alakasız yanıtlar üretmesine neden olur. Daha iyi promptlar yazarak daha başarılı sonuçlar alınabilinir.
 
 ***Nont: local.py Rag modelini istediğiniz LLM modeli ile kendi bilgisayarınızca çalıştırabilmeniz için. (HuggingFaceHub'da 10G model boyut sınırlaması mevcut)***
