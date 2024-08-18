@@ -20,7 +20,7 @@ Veri setini seçtikten sonra, öncelikle verilerin içeriğini incelememiz gerek
 
 ### 2.1 Verileri İnceleme:
 
-Örnek bir log kaydı:
+Örnek bir log kaydı:<br><br>
 
     14.49.42.25 - - [12/May/2022:01:24:44 +0000] "GET /articles/ppp-over-ssh/ HTTP/1.1" 200 18586 "-" "Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.2b1) Gecko/20091014 Firefox/3.6b1 GTB5
 
