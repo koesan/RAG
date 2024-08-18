@@ -1,6 +1,6 @@
 # RAG
 
-# 1. Veri Seti Bulma:
+## 1. Veri Seti Bulma:
 
 Web trafik loglarını içeren veri setini bulmak için çeşitli kaynaklardan faydalandım. Bu kapsamda, Kaggle'da bulduğumuz ve Apache web sunucusu loglarını içeren veri setini tercih ettim. Bu veri seti, çeşitli log girdilerini kapsamlı bir şekilde içermektedir ve proje için uygun nitelikte verilere sahiptir.
 
@@ -9,11 +9,11 @@ Link: https://www.kaggle.com/datasets/kimjmin/apache-web-log
 
 Bu veri seti, Apache web sunucusundan alınmış log kayıtlarını içerir ve IP adresleri, erişilen sayfalar, zaman damgaları gibi bilgileri içermektedir. Veri setinin içeriği, projede ihtiyaç duyduğumuz bilgileri sağlamaktadır.
 
-# 2. Veri Ön İşleme:
+## 2. Veri Ön İşleme:
 
 Veri setini seçtikten sonra, öncelikle verilerin içeriğini incelememiz gerekir.
 
-## 2.1 Verileri İnceleme:
+### 2.1 Verileri İnceleme:
 
 Örnek bir log kaydı:
 
