@@ -27,7 +27,7 @@ Veri setini seçtikten sonra, öncelikle verilerin içeriğini incelememiz gerek
 | Alan                          | Açıklama                                                                                   |
 |-------------------------------|--------------------------------------------------------------------------------------------|
 | **IP Adresi**                 | 14.49.42.25                                                                              |
-| **Kullanıcı Kimliği**         | (Boş)                                                                                     |
+| **Kullanıcı Kimliği**         | - - (Boş)                                                                                     |
 | **Tarih ve Saat**             | [12/May/2022:01:24:44 +0000]                                                               |
 | **HTTP İsteği**               | "GET /articles/ppp-over-ssh/ HTTP/1.1"                                                    |
 | **Yanıt Durum Kodu**          | 200                                                                                       |
