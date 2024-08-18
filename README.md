@@ -59,7 +59,7 @@ Bu verilerde kullanılan tarayıcı, tarayıcı versiyonu, işletim sistemi, sis
 
 Veri setini bu hale getirmek RAG yapısında gözle görlülür ölçüde İyileştirmeyi başardım.
 
-***Bu temizlik işlemlerinin tamamı useragents modülü içerisinde geçekleştirilecek***
+***Not: Bu temizlik işlemlerinin tamamı useragents modülü içerisinde geçekleştirilecek***
 
 Sonuç olarak, elimde şu şekilde temizlenmiş bir veri kaldı:
 
