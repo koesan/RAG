@@ -194,7 +194,7 @@ Bu değerlendirme sürecini daha objektif ve ölçülebilir kılmak için çeşi
 * F1 Skoru: Modelin precision (kesinlik) ve recall (duyarlılık) değerlerinin harmonik ortalamasıdır. F1 Skoru, şu formülle hesaplanır: F1 Skoru = 2 * (precision * recall) / (precision + recall).
 * Kullanıcı Geri Bildirimi: Kullanıcıların modelin verdiği cevaplarla ilgili memnuniyetini ölçerek de doğruluk değerlendirmesi yapılabilir.
 
-Kendi projemde, modelin verdiği cevapları manuel olarak inceleyip, doğruluğunu değerlendirerek karar verdim. Bunun için 5 tane soru oluşturdum ve modele sordum ve cevaplarını aldım ayrıca aynı soruları mase modelede sordum ve onunda cevaplarını aldım.
+Kendi projemde, modelin verdiği cevapları manuel olarak inceleyip doğruluğuna, verdiği cevaplara göre değerlendirerek bakmaya kararverdim. Bunun için 5 tane soru oluşturdum ve modele sordum ve cevaplarını aldım ayrıca aynı soruları mase modelede sordum ve onunda cevaplarını aldım.
 
 | Sorgu                                                                                                             | Oluşturduğum RAG                           | Base LLM                   |
 |-------------------------------------------------------------------------------------------------------------------|--------------------------------------------|----------------------------|
@@ -204,7 +204,7 @@ Kendi projemde, modelin verdiği cevapları manuel olarak inceleyip, doğruluğu
 | **Which is the most used browser?**                                                                               | `IE` (Yanlış)                             | `google chrome` (Doğru)    |
 | **How are missing data labeled?**                                                                                   | `Unknown` (Doğru)                         | `The following is a list of the ten most common sex-related disorders` (Yanlış) |
 
-Sonuçları değerlendirdiğimizde, LLM modeli, log verilerinin kullanılması gerektiği sorularda tahmin edilebildiği gibi veri seti ile uyuşmayan, kısaca yanlış cevaplar verdiği gözlemlenmiştir. Sonuç olarak, RAG yapısı gözle görülür şekilde başarılı sonuçlar üretmektedir.
+Sonuçları değerlendirdiğimizde, oluşturduğum RAG modeli 5 sorudan 4'üne istediğim cevapları vermeyi başardı; bu da benim için yeterli bir başarıydı. LLM modelinin log verileri ile ilgili sorularda, veri seti ile uyumsuz ve dolayısıyla yanlış cevaplar verdiği gözlemlendi. Ancak, genel olarak RAG yapısının başarılı sonuçlar ürettiği ve performansının tatmin edici olduğu sonucuna vardım.
 
 ## 5. Kalitesini artırma önerileri:
 
@@ -218,6 +218,7 @@ Sonuçları değerlendirdiğimizde, LLM modeli, log verilerinin kullanılması g
 
 * as_retriever: search_type, top_k, filter gibi parametrelerle ince ayar yaparak yapının başarısını artırabilirsiniz.
 
-* Daha iyi prompt: İyi yazılmış bir prompt modelin doğru ve alakalı yanıtlar vermesini sağlar. Eksik veya belirsiz bir prompt, modelin yanlış veya alakasız yanıtlar üretmesine neden olur. Daha iyi promptlar yazarak daha başarılı sonuçlar alınabilinir.
+* Prompt: İyi yazılmış bir prompt modelin doğru ve alakalı yanıtlar vermesini sağlar. Eksik veya belirsiz bir prompt, modelin yanlış veya alakasız yanıtlar üretmesine neden olur. Daha iyi promptlar yazarak daha başarılı sonuçlar alınabilinir.
 
-***Nont: local.py Rag modelini istediğiniz LLM modeli ile kendi bilgisayarınızca çalıştırabilmeniz için. (HuggingFaceHub'da 10G model boyut sınırlaması mevcut)***
+> [!NOTE]
+> local.py Rag modelini istediğiniz LLM modeli ile kendi bilgisayarınızca çalıştırabilmeniz için. (HuggingFaceHub'da 10G model boyut sınırlaması mevcut)***
