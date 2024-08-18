@@ -73,7 +73,12 @@ Veri setini bu hale getirmek RAG yapısında gözle görlülür ölçüde İyile
 
 Sonuç olarak, elimde şu şekilde temizlenmiş bir veri kaldı:
 
-    "Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.2b1) Gecko/20091014 Firefox/3.6b1 GTB5"; 16 subscribers; feed-id=3389821348893992437)"
+```json
+{
+    "Browser": "Firefox Beta",
+    "Browser Version": "3.6.b1",
+    "Operating System": "Windows"
+}
 
 Elimdeki veri setinde 300.000 satır veri vardı temizleme işleminden sonra 229561 satır veri kadlı.
 
