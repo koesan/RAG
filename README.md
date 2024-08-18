@@ -47,7 +47,7 @@ Modelin daha iyi performans vere bilmesi için veri setindeki gereksiz verileri 
 |-----------------------------------|----------------------------------------------------------------------------------------------------------------------------------------|
 | **IP Adresi (14.49.42.25)**       | IP adresi kullanılarak olası tehditler tespit edilebilir. Ancak bu projede gerekli olmadığını düşündüğümden dolayı IP adresini kullanmamaya karar verdim. |
 | **- -**                           | Veri olmadığı için bu alanı sildim.                                                                                                     |
-| **Tarih ve Saat ([12/May/2022:01:24:44 +0000])** | 12 Mayıs ile 7 Haziran arasındaki veriler bulunuyor. Model 17 Temmuz 2023'te güncellendiğinden, 2022 tarihli bilgilerin içeriyor olması cevabı etkileyebilir diye düşündüğümden almadım. |
+| **Tarih ve Saat ([12/May/2022:01:24:44 +0000])** | Veri setinde 12 Mayıs ile 7 Haziran arasındaki veriler bulunuyor. Model 17 Temmuz 2023'te güncellendiğinden, 2022 tarihli bilgilerin içeriyor olması cevabı etkileyebilir diye düşündüğümden almadım. |
 | **HTTP İsteği ("GET /articles/ppp-over-ssh/ HTTP/1.1")** | Proje için anlamlı olmadığından kullanmamaya karar verdim.                                                   |
 | **Durum Kodu ve Veri Boyutu (200, 18586)** | Sunucu yanıtı ve veri boyutunun proje için kullanmaya gerek olmadığını düşündüğümden bu verileri de temizledim.                     |
 | **Otomatik Tarayıcılar ve Bozuk Veriler** | Bazı otomatik tarayıcılar, botlar veya bozuk veriler anlamlı bilgi içermediği için bunları da veri setinden çıkardım.                 |
