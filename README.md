@@ -43,6 +43,22 @@ Modelin daha iyi performans vere bilmesi için veri setindeki gereksiz verileri 
 * Durum Kodu ve Veri Boyutu (200, 18586): Sunucu yanıtı ve veri boyutunun proje için kullanmaya gerek olmadığını düşündüğümden bu verileri de temizledim.
 * Otomatik Tarayıcılar ve Bozuk Veriler: Bazı otomatik tarayıcılar, botlar veya bozuk veriler anlamlı bilgi içermediği için bunları da veri setinden çıkardım.
 
+Bu işlemler yapıldıktan sonra aşağıdaki gibi bir veri yapısı oldu.
+
+	Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.2b1) Gecko/20091014 Firefox/3.6b1 GTB5"; 16 subscribers; feed-id=3389821348893992437)
+
+Bu veri üzerinde RAG yapısını kurup defalarca test ettiğimde sonuçların istediğim ölçüde başarılı olmadığını gözlemledim. Başarıyı artırmak için öncelikle veri yapsını elden geçridim ve "user_agents" kütüphanesini kullanarak verileri düzeltmeye kararvedim.
+
+"user_agents": User-Agent dizgilerini analiz etmek ve bu dizgilerden çeşitli bilgiler çıkarmak için kullanılan bir kütüphanedir.
+
+bu kütüphane ile user-agents verilerindeki istediğim verileri alarak veri setini düzelttim ve sonuç olarak aşağıdaki gibi bir veri yapsını elde ettim.
+
+	"Browser": "Firefox Beta", "Browser Version": "3.6.b1", "Operating System": "Windows"
+
+Bu verilerde kullanılan tarayıcı, tarayıcı versiyonu, işletim sistemi, sistem dili bilgileri etiketli bir şekilde kullanıla bilecek.
+
+Veri setini bu hale getirmek RAG yapısında gözle görlülür ölçüde İyileştirmeyi başardım.
+
 ***Bu temizlik işlemlerinin tamamı useragents modülü içerisinde geçekleştirilecek***
 
 Sonuç olarak, elimde şu şekilde temizlenmiş bir veri kaldı:
