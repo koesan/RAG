@@ -54,7 +54,7 @@ Modelin daha iyi performans vere bilmesi için veri setindeki gereksiz verileri 
 | **Otomatik Tarayıcılar ve Bozuk Veriler** | Bazı otomatik tarayıcılar, botlar veya bozuk veriler anlamlı bilgi içermediği için bunları da veri setinden çıkardım.                 |
 
 
-Bu işlemler yapıldıktan sonra aşağıdaki gibi bir veri yapısı oldu.
+Veriyi temizledikten sonra veriler aşağıdaki gibi olacak.
 
     Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.2b1) Gecko/20091014 Firefox/3.6b1 GTB5"; 16 subscribers; feed-id=3389821348893992437)
 
