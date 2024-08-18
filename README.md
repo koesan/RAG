@@ -4,7 +4,7 @@
 
 Web trafik loglarını içeren veri setini bulmak için çeşitli kaynaklardan faydalandım. Bu kapsamda, Kaggle'da bulduğumuz ve Apache web sunucusu loglarını içeren veri setini tercih ettim. Bu veri seti, çeşitli log girdilerini kapsamlı bir şekilde içermektedir ve proje için uygun nitelikte verilere sahiptir.
 
-Kullanılan Veri Seti: https://www.kaggle.com/datasets/kimjmin/apache-web-log
+**Veri Seti:** [Apache Web Log - Kaggle](https://www.kaggle.com/datasets/kimjmin/apache-web-log)
 
 Bu veri seti, Apache web sunucusundan alınmış log kayıtlarını içerir ve IP adresleri, erişilen sayfalar, zaman damgaları gibi bilgileri içermektedir. Veri setinin içeriği, projede ihtiyaç duyduğumuz bilgileri sağlamaktadır.
 
@@ -22,8 +22,9 @@ Veri ön işleme, ham verilerin analiz ve modelleme için uygun hale getirilmesi
 ### 2.1 Verileri İnceleme:
 
 Örnek bir log kaydı:
-
-    14.49.42.25 - - [12/May/2022:01:24:44 +0000] "GET /articles/ppp-over-ssh/ HTTP/1.1" 200 18586 "-" "Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.2b1) Gecko/20091014 Firefox/3.6b1 GTB5
+```
+14.49.42.25 - - [12/May/2022:01:24:44 +0000] "GET /articles/ppp-over-ssh/ HTTP/1.1" 200 18586 "-" "Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.2b1) Gecko/20091014 Firefox/3.6b1 GTB5
+```
 
 | Alan                          | Açıklama                                                                                   |
 |-------------------------------|--------------------------------------------------------------------------------------------|
@@ -55,7 +56,9 @@ Modelin daha iyi performans vere bilmesi için veri setindeki gereksiz verileri 
 
 Veriyi temizledikten sonra veriler aşağıdaki gibi olacak.
 
-    Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.2b1) Gecko/20091014 Firefox/3.6b1 GTB5"; 16 subscribers; feed-id=3389821348893992437)
+```
+Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.2b1) Gecko/20091014 Firefox/3.6b1 GTB5"; 16 subscribers; feed-id=3389821348893992437)
+```
 
 Bu veri üzerinde RAG yapısını kurup defalarca test ettiğimde sonuçların istediğim ölçüde başarılı olmadığını gözlemledim. Başarıyı artırmak için öncelikle veri yapsını elden geçridim ve "user_agents" kütüphanesini kullanarak verileri düzeltmeye kararvedim.
 
@@ -63,7 +66,9 @@ Bu veri üzerinde RAG yapısını kurup defalarca test ettiğimde sonuçların i
 
 bu kütüphane ile user-agents verilerindeki istediğim verileri alarak veri setini düzelttim ve sonuç olarak aşağıdaki gibi bir veri yapsını elde ettim.
 
-    "Browser": "Firefox Beta", "Browser Version": "3.6.b1", "Operating System": "Windows"
+```
+"Browser": "Firefox Beta", "Browser Version": "3.6.b1", "Operating System": "Windows"
+```
 
 Bu verilerde kullanılan tarayıcı, tarayıcı versiyonu, işletim sistemi, sistem dili bilgileri etiketli bir şekilde kullanıla bilecek.
 
@@ -74,11 +79,7 @@ Veri setini bu hale getirmek RAG yapısında gözle görlülür ölçüde İyile
 Sonuç olarak, elimde şu şekilde temizlenmiş bir veri kaldı:
 
 ```
-{
-    "Browser": "Firefox Beta",
-    "Browser Version": "3.6.b1",
-    "Operating System": "Windows"
-}
+"Browser": "Firefox Beta", "Browser Version": "3.6.b1", "Operating System": "Windows"
 ```
 
 Elimdeki veri setinde 300.000 satır veri vardı temizleme işleminden sonra 229561 satır veri kadlı.
