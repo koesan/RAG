@@ -9,6 +9,9 @@ Link: https://www.kaggle.com/datasets/kimjmin/apache-web-log
 
 Bu veri seti, Apache web sunucusundan alınmış log kayıtlarını içerir ve IP adresleri, erişilen sayfalar, zaman damgaları gibi bilgileri içermektedir. Veri setinin içeriği, projede ihtiyaç duyduğumuz bilgileri sağlamaktadır.
 
+---
+
+
 ## 2. Veri Ön İşleme:
 
 Veri setini seçtikten sonra, öncelikle verilerin içeriğini incelememiz gerekir.
