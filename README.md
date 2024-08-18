@@ -71,7 +71,7 @@ Elimdeki veri setinde 300.000 satır veri vardı temizleme işleminden sonra 229
 
 ****
 
-3. Sistemin Kurulumu
+## 3. Sistemin Kurulumu
 
 RAG (Retrieval-Augmented Generation) iki ana yapıdan oluşur: Retrieval (Bilgi Getirme) ve Generation (Üretim).
 
