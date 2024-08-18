@@ -73,7 +73,7 @@ Veri setini bu hale getirmek RAG yapısında gözle görlülür ölçüde İyile
 
 Sonuç olarak, elimde şu şekilde temizlenmiş bir veri kaldı:
 
-```json
+```
 {
     "Browser": "Firefox Beta",
     "Browser Version": "3.6.b1",
