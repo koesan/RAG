@@ -168,6 +168,7 @@ chainSim = RetrievalQA.from_chain_type(
 <br><br>
 
 Son olarak, sorgumuzu yapıya aktararak çıktıyı alabiliriz:
+
 `
 chainSim.invoke(question)
 `
