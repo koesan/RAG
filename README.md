@@ -16,7 +16,7 @@ Bu veri seti, Apache web sunucusundan alınmış log kayıtlarını içerir ve I
 
 ## 2. Veri Ön İşleme:
 
-Veri setini seçtikten sonra, öncelikle verilerin içeriğini incelememiz gerekir.
+Veri ön işleme, ham verilerin analiz ve modelleme için uygun hale getirilmesini sağlar. Bu süreçte, eksik, hatalı veya düzensiz veriler düzeltilir ve standartlaştırılır. Eksik veriler tamamlanır veya uygun şekilde işlenir, hatalı girişler düzeltilir ve farklı formatlardaki veriler tutarlı hale getirilir. Ayrıca, veriler normalizasyon ve standartlaştırma gibi tekniklerle uyumlu hale getirilir. Bu işlemler, verilerin doğruluğunu artırır ve modelin performansını iyileştirir, böylece elde edilen sonuçlar daha güvenilir ve anlamlı olur.
 
 <br><br>
 ### 2.1 Verileri İnceleme:
