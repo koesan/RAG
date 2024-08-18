@@ -148,26 +148,30 @@ Embedding kısmında yine ücretsiz ve kurulumu kolay olan HuggingFaceEmbeddings
 
 RAG yapısını çalıştırmak için öncelikle öncelikle veriler lokalde saklandıysa, localdeki verileri vektör veri setlerinin yüklenmesi gerekiyor:
 
-    library = FAISS.load_local("book", embeddings, allow_dangerous_deserialization=True)
+`library = FAISS.load_local("book", embeddings, allow_dangerous_deserialization=True)`
 
 Ardından, dil modeli ve bilgi getirme mekanizmasını bir araya getirmeliyiz. Böylece soru sorulduğunda, bilgi getirme mekanizması en uygun verileri arar ve dil modeli bu verilerle bir yanıt oluşturur.
-
-    chainSim = RetrievalQA.from_chain_type(
-        llm=llm,
-        chain_type="map_reduce", 
-        retriever=library.as_retriever()        
-    )
-
-    chain_type: 
-        stuff: Basit ve hızlı bilgi getirme ve yanıt oluşturma için.
-        map_reduce: Büyük veri kümesi üzerinde paralel işleme için.
-        refine: İlk yanıtı iteratif olarak geliştirmek için.
-        map_rerank: Bilgi parçalarını sıralamak ve en uygun sonuçları seçmek için.
-
+```
+chainSim = RetrievalQA.from_chain_type(
+    llm=llm, # Büyük dil modeli
+    chain_type="map_reduce", 
+    retriever=library.as_retriever() # Vektör veri setinden  bilgi alma kısmı.   
+)
+```
+<br><br>
+> [!NOTE]
+>chain_type: 
+>    stuff: Basit ve hızlı bilgi getirme ve yanıt oluşturma için.
+>    map_reduce: Büyük veri kümesi üzerinde paralel işleme için.
+>    refine: İlk yanıtı iteratif olarak geliştirmek için.
+>    map_rerank: Bilgi parçalarını sıralamak ve en uygun sonuçları seçmek için.
+<br><br>
 
 Son olarak, sorgumuzu yapıya aktararak çıktıyı alabiliriz:
-
-    chainSim.invoke(question)
+`
+chainSim.invoke(question)
+`
+<br><br>
 
 ## 4. Değerlendirme.
 
