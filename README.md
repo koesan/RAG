@@ -129,8 +129,11 @@ Embeddings modeli, RAG sisteminde kritik bir role sahiptir çünkü metinlerin a
 <br><br>
 ### 3.3 Generation (Üretim):
 
-RAG sisteminde kullanılan LLM (Büyük Dil Modeli) modelinin başarısı, üretilen sonuçların doğruluğunu ve anlamlılığını doğrudan etkiler. Uygun modelleri bulmak için "https://huggingface.co/" sayfasından arama yapabilirsiniz. Bu projede, performans ve uygunluk açısından en iyi seçenek olarak "google/flan-t5-large" modelini kullandım. Her ne kadar GPT gibi büyük dil modelleri oldukça başarılı olsa da, ücretli oldukları için bu projede kullanamadım. 
-"google/flan-t5-xxl" gibi daha büyük modeller ise HuggingFaceHub APİ bağlantı sorunları nedeniyle tercih edilmedi(google/flan-t5-xxl Modelini local.py üzerinde çalıştırabilirsiniz). Sonuç olarak, performans ve erişilebilirlik açısından en uygun model olarak "google/flan-t5-large" modelinde karar kıldım.
+RAG sisteminde kullanılan LLM (Büyük Dil Modeli) modelinin başarısı, üretilen sonuçların doğruluğunu ve anlamlılığını doğrudan etkiler. Uygun modelleri bulmak için "https://huggingface.co/" sayfasından arama yapabilirsiniz. 
+Bu projede, performans ve uygunluk açısından en iyi seçenek olarak "google/flan-t5-large" modelini kullandım. 
+Her ne kadar GPT gibi büyük dil modelleri oldukça başarılı olsa da, ücretli oldukları için bu projede kullanamadım. 
+"google/flan-t5-xxl" gibi daha büyük modeller ise HuggingFaceHub APİ bağlantı sorunları nedeniyle tercih edilmedi(google/flan-t5-xxl Modelini local.py üzerinde çalıştırabilirsiniz). 
+Sonuç olarak, performans ve erişilebilirlik açısından en uygun model olarak "google/flan-t5-large" modelinde karar kıldım.
 ```
 from langchain_community.llms import HuggingFaceHub
 
