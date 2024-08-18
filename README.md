@@ -64,7 +64,7 @@ Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.2b1) Gecko/20091014 Firef
 > Bu veri üzerinde RAG yapısını kurup defalarca test ettiğimde sonuçların istediğim ölçüde başarılı olmadığını gözlemledim. Başarıyı artırmak için, öncelikle veri yapısını gözden geçirdim ve "user_agents" kütüphanesini kullanarak verileri 
 > düzeltmeye karar verdim.
 >
->"user_agents": User-Agent dizgilerini analiz etmek ve bu dizgilerden çeşitli bilgiler çıkarmak için kullanılan bir kütüphanedir.
+>"user_agents": User-Agent verilerini analiz etmek ve bu verilerilerden çeşitli bilgiler çıkarmak için kullanılan bir kütüphanedir.
 
 bu kütüphane ile user-agents verilerindeki istediğim verileri alarak veri setini düzelttim ve sonuç olarak aşağıdaki gibi bir veri yapsını elde ettim.
 
