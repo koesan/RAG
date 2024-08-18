@@ -85,12 +85,12 @@ RAG (Retrieval-Augmented Generation) iki ana yapıdan oluşur: Retrieval (Bilgi 
 
 ### 3.1 Retrieval (Bilgi Getirme):
 
-Bu katmanın esas amacı, vektör veri tabanında soruya en uygun verileri getirmektir.
+Retrieval katmanının temel amacı, kullanıcının sorduğu soruya en uygun verileri vektör veri tabanından getirmektir. Bu katman, sorgu ile veri tabanındaki veriler arasındaki benzerlikleri değerlendirir ve en ilgili bilgileri bulur. Sorgu, genellikle bir metin veya doğal dil ifadesi olarak sunulur ve bu ifade, vektörlere dönüştürülerek veri tabanındaki diğer vektörlerle karşılaştırılır. Bu karşılaştırma sonucunda, en yüksek benzerlik skoruna sahip veriler seçilir ve kullanıcıya sunulmak üzere üst katmanlara iletilir. Bu süreç, sistemin doğru ve anlamlı yanıtlar üretmesi için kritik bir adımdır ve bilgiye hızlı ve etkili erişim sağlar.
 
 <br><br>
 ### 3.1.1 Verilerin İşlenmesi:
 
-İlk adımda, veri setindeki veriler alınır ve işlenir.
+İlk adımda, log dosyasındaki verilerin bir vektör veri tabanına yüklenmesi gerekmektedir. Bu işlem için öncelikle veri setindeki veriler alınır, ardından uygun şekilde işlenir ve temizlenir. İşlenmiş veriler, daha sonra vektör formatına dönüştürülerek vektör veri tabanına eklenir. Bu adım, verilerin daha sonra yapılacak sorgulamalara hızlı ve etkili bir şekilde yanıt verebilmesi için gereklidir.
 
 <br><br>
 > [!NOTE]
@@ -108,18 +108,20 @@ Bu listeyi Document nesnelerine dönüştürerek gereksiz boşlukları temizler 
 <br><br>
 ### 3.1.2 Embedding ile Vektörlere Dönüştürme:
 
-Kesilen veriler, embedding işlemi ile sayısal vektörlere dönüştürülür. Bu sayede metinlerin anlamsal içeriği vektör uzayında temsil edilir ve benzerlik aramaları bu vektörler üzerinde yapılır. Ardından, elde edilen vektörler FAISS Vektör Veri Tabanına yüklenir.
-
-    from langchain_community.vectorstores import FAISS
-    from langchain_community.embeddings import HuggingFaceEmbeddings
+Kesilen veriler, embedding işlemi ile sayısal vektörlere dönüştürülür. Bu süreçte, metinlerin anlamsal içeriği vektör uzayında temsil edilerek, benzerlik aramaları için uygun hale getirilir. Ardından, elde edilen vektörler FAISS Vektör Veri Tabanına yüklenir. Bu veri tabanı, yüksek boyutlu vektörler arasında hızlı ve etkili benzerlik aramaları yaparak, ilgili verilerin bulunmasını sağlar. Bu adım, özellikle büyük veri setlerinde verimli arama süreçleri için kritik öneme sahiptir.
+```
+from langchain_community.vectorstores import FAISS
+from langchain_community.embeddings import HuggingFaceEmbeddings
     
-    embeddings = HuggingFaceEmbeddings()
+embeddings = HuggingFaceEmbeddings()
     
-    book = FAISS.from_documents(documents, embeddings)
-    
-    Vektör veri tabanına yüklenen veriler lokalde kaydedilir. Bu sayede sürekli veri çekme, bölme ve vektörlere çevirme işlemleri tekrarlanmaz ve sorgulama işlemleri hızlanır.
-    
-    book.save_local("library") # İstenirse vektör veritabanı local bilgisayara kaydedilebilir.
+book = FAISS.from_documents(documents, embeddings)
+   
+book.save_local("library") # İstenirse vektör veritabanı local bilgisayara kaydedilebilir.
+```
+<br><br>
+> [!NOTE]
+> Vektör veri tabanına yüklenen veriler lokalde kaydedilir. Bu sayede, sürekli olarak veri çekme, bölme ve vektörlere çevirme işlemleri tekrarlanmaz ve bu işlemlerle zaman kaybedilmez.
 
 Embeddings modeli, RAG sisteminde kritik bir role sahiptir. Metinlerin anlamsal temsillerinin ne kadar doğru yapıldığını belirler. Eğer embedding modeli güçlü ve etkiliyse, benzer anlamlara sahip metin parçaları vektör uzayında birbirine yakın vektörlerle temsil edilir. 
 Bu da, FAISS gibi vektör veri tabanlarında bu metin parçalarının doğru bir şekilde gruplandırılmasını sağlar. Bu süreç, yalnızca performansı artırmakla kalmaz, aynı zamanda sorguya en uygun verilerin doğru konumlandırılmasıyla arama işleminin doğruluğunu ve etkinliğini de garanti eder. 
