@@ -60,9 +60,11 @@ Veriyi temizledikten sonra veriler aşağıdaki gibi olacak.
 Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.2b1) Gecko/20091014 Firefox/3.6b1 GTB5"; 16 subscribers; feed-id=3389821348893992437)
 ```
 
-Bu veri üzerinde RAG yapısını kurup defalarca test ettiğimde sonuçların istediğim ölçüde başarılı olmadığını gözlemledim. Başarıyı artırmak için öncelikle veri yapsını elden geçridim ve "user_agents" kütüphanesini kullanarak verileri düzeltmeye kararvedim.
-
-"user_agents": User-Agent dizgilerini analiz etmek ve bu dizgilerden çeşitli bilgiler çıkarmak için kullanılan bir kütüphanedir.
+> [!NOTE]
+> Bu veri üzerinde RAG yapısını kurup defalarca test ettiğimde sonuçların istediğim ölçüde başarılı olmadığını gözlemledim. Başarıyı artırmak için, öncelikle veri yapısını gözden geçirdim ve "user_agents" kütüphanesini kullanarak verileri 
+> düzeltmeye karar verdim.
+>
+>"user_agents": User-Agent dizgilerini analiz etmek ve bu dizgilerden çeşitli bilgiler çıkarmak için kullanılan bir kütüphanedir.
 
 bu kütüphane ile user-agents verilerindeki istediğim verileri alarak veri setini düzelttim ve sonuç olarak aşağıdaki gibi bir veri yapsını elde ettim.
 
