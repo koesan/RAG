@@ -17,18 +17,18 @@ Veri setini seçtikten sonra, öncelikle verilerin içeriğini incelememiz gerek
 
 Örnek bir log kaydı:
 
-"""14.49.42.25 - - [12/May/2022:01:24:44 +0000] "GET /articles/ppp-over-ssh/ HTTP/1.1" 200 18586 "-" "Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.2b1) Gecko/20091014 Firefox/3.6b1 GTB5"""
+	14.49.42.25 - - [12/May/2022:01:24:44 +0000] "GET /articles/ppp-over-ssh/ HTTP/1.1" 200 18586 "-" "Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.2b1) Gecko/20091014 Firefox/3.6b1 GTB5
 
 Bu kayıtta yer alan bilgiler:
 
 	14.49.42.25 : İstemcinin IP adresi
-	- -: Kullanıcı kimliğini gösteren alan, ancak boş
-	[12/May/2022:01:24:44 +0000]: İsteğin yapıldığı tarih ve saat
-	"GET /articles/ppp-over-ssh/ HTTP/1.1": HTTP isteğinin içeriği
-	200: Sunucunun yanıt durumu kodu
-	18586: Sunucunun istemciye gönderdiği veri boyutu
-	"-": İsteği yönlendiren URL'yi gösteren bölüm
-	"Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.2b1) Gecko/20091014 Firefox/3.6b1 GTB5"; 16 subscribers; feed-id=3389821348893992437)": User-Agent bilgileri
+	- - : Kullanıcı kimliğini gösteren alan, ancak boş
+	[12/May/2022:01:24:44 +0000] : İsteğin yapıldığı tarih ve saat
+	"GET /articles/ppp-over-ssh/ HTTP/1.1" : HTTP isteğinin içeriği
+	200 : Sunucunun yanıt durumu kodu
+	18586 : Sunucunun istemciye gönderdiği veri boyutu
+	"-" : İsteği yönlendiren URL'yi gösteren bölüm
+	"Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.2b1) Gecko/20091014 Firefox/3.6b1 GTB5"; 16 subscribers; feed-id=3389821348893992437)" : User-Agent bilgileri
 
 Farklı log dosyalarında farklı veriler olabilir.
 
