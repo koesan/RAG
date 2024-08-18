@@ -21,7 +21,7 @@ Veri setini seçtikten sonra, öncelikle verilerin içeriğini incelememiz gerek
 
 Bu kayıtta yer alan bilgiler:
 
-	14.49.42.25 : * İstemcinin IP adresi
+	14.49.42.25 : İstemcinin IP adresi
 	- - : Kullanıcı kimliğini gösteren alan, ancak boş
 	[12/May/2022:01:24:44 +0000] : İsteğin yapıldığı tarih ve saat
 	"GET /articles/ppp-over-ssh/ HTTP/1.1" : HTTP isteğinin içeriği
@@ -32,28 +32,22 @@ Bu kayıtta yer alan bilgiler:
 
 Farklı log dosyalarında farklı veriler olabilir.
 
-2.2 Kullanılacak Verileri Seçme:
+### 2.2 Kullanılacak Verileri Seçme:
 
-Veri setindeki gereksiz verileri temizleyerek modelin başarısını artırabiliriz. Bu nedenle, hangi verilerin kullanılabilir olduğuna karar verdim:
+Modelin daha iyi performans vere bilmesi için veri setindeki gereksiz verileri temizlemeliyiz. Bu nedenle, hangi verilerin kullanılabilir olduğuna karar verilmeli:
 
-IP Adresi (14.49.42.25): IP adresi kullanılarak olası tehditler tespit edilebilir (örneğin, aynı IP adresinden gelen çok sayıda istek potansiyel bir saldırıyı işaret edebilir). Ancak bu projede gerekli olmadığını düşündüğümden dolayı IP adresini kullanmamaya karar verdim.
+IP Adresi (14.49.42.25): IP adresi kullanılarak olası tehditler tespit edilebilir. Ancak bu projede gerekli olmadığını düşündüğümden dolayı IP adresini kullanmamaya karar verdim.
 - -: Veri olmadığı için bu alanı sildim.
-Tarih ve Saat ([12/May/2022:01:24:44 +0000]): Veri seti 12 Mayıs ile 7 Haziran arasındaki verilerden oluşuyor. 26 günlük bir aralık olduğu için bu veriyi kullanmayı mantıklı bulmadım. Daha uzun bir aralık (örneğin 3-4 ay) olsaydı, bu veri anlamlı olabilirdi. Ayrıca, model 17 Temmuz 2023'te güncellendiğinden, 2022 tarihli bilgilerin çoğunu zaten içeriyor olabilir.
+Tarih ve Saat ([12/May/2022:01:24:44 +0000]): 12 Mayıs ile 7 Haziran arasındaki veriler bulunuyor. Model 17 Temmuz 2023'te güncellendiğinden, 2022 tarihli bilgilerin içeriyor olması cevabı etkiliyeceğini düşündüğümdne almadım.
 HTTP İsteği ("GET /articles/ppp-over-ssh/ HTTP/1.1"): Proje için anlamlı olmadığından kullanmamaya karar verdim.
 Durum Kodu ve Veri Boyutu (200, 18586): Sunucu yanıtı ve veri boyutunun proje için kullanmaya gerek olmadığını düşündüğümden bu verileri de temizledim.
 Otomatik Tarayıcılar ve Bozuk Veriler: Bazı otomatik tarayıcılar, botlar veya bozuk veriler anlamlı bilgi içermediği için bunları da veri setinden çıkardım.
-ayrıca tekrar eden verileri modelin başarısını artırmak için temizledim.
 
-Bu temizlik işlemlerinin tamamı useragents modülü içerisinde geçekleştirilecek
-
-documents = useragents.process_log_files_to_list("weblog_sample.log")
-documents = [Document(page_content=line.strip()) for line in documents if line.strip()]
-
-main içerisindeki bu kod ilede veriler kullanıla bilmesi için istenilen formata getirilecek.
+* Bu temizlik işlemlerinin tamamı useragents modülü içerisinde geçekleştirilecek
 
 Sonuç olarak, elimde şu şekilde temizlenmiş bir veri kaldı:
 
-"Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.2b1) Gecko/20091014 Firefox/3.6b1 GTB5"; 16 subscribers; feed-id=3389821348893992437)"
+	"Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.2b1) Gecko/20091014 Firefox/3.6b1 GTB5"; 16 subscribers; feed-id=3389821348893992437)"
 
 Elimdeki veri setinde 300.000 satır veri vardı temizleme işleminden sonra 1407 satır veri kadlı.
 
