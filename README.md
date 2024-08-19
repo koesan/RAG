@@ -2,7 +2,7 @@
 
 Bu proje, Retrieval-Augmented Generation (RAG) yapısının nasıl kurulacağını ve uygulanacağını detaylandırmaktadır. RAG, bilgi getirme ve dil üretim süreçlerini birleştirerek daha anlamlı ve doğru yanıtlar elde edilmesini sağlar. Proje, Apache web loglarını içeren bir veri seti kullanarak RAG yapısının nasıl geliştirileceğini ve değerlendirileceğini kapsamlı bir şekilde ele alır. Verilerin ön işlenmesinden, embedding işlemlerine, vektör veri tabanı kullanımına ve sonuçların değerlendirilmesine kadar tüm adımlar detaylandırılmıştır.
 
-# 0. Gerekli kurulumlar.
+# 0. Gerekli kurulumlar:
 
 ***main.py***
 ```
