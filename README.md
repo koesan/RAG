@@ -2,6 +2,35 @@
 
 Bu proje, Retrieval-Augmented Generation (RAG) yapısının nasıl kurulacağını ve uygulanacağını detaylandırmaktadır. RAG, bilgi getirme ve dil üretim süreçlerini birleştirerek daha anlamlı ve doğru yanıtlar elde edilmesini sağlar. Proje, Apache web loglarını içeren bir veri seti kullanarak RAG yapısının nasıl geliştirileceğini ve değerlendirileceğini kapsamlı bir şekilde ele alır. Verilerin ön işlenmesinden, embedding işlemlerine, vektör veri tabanı kullanımına ve sonuçların değerlendirilmesine kadar tüm adımlar detaylandırılmıştır.
 
+# 0. Gerekli kurulumlar.
+
+***main.py***
+* pip install langchain-community==0.2.12
+* pip install langchain==0.2.14
+* pip install user-agents==2.2.0
+* pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu124
+
+> [!NOTE]
+> Benim bilgisayarımda CUDA sürümü 12.4 olduğu için, CUDA 12.4 ile uyumlu PyTorch sürümünü kurdum. Siz de kendi CUDA sürümünüz ile uyumlu olan PyTorch sürümünü indirmeniz gerekiyor. Bilgisayarınızda CUDA yoksa, CPU sürümünü indirebilirsiniz.
+<br><br>
+
+***local.py***
+* pip install transformers==4.44.0
+* pip install langchain==0.2.14
+* pip install user-agents==2.2.0
+* pip install langchain-huggingface==0.0.3
+* pip install langchain-community==0.2.12
+* pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu124
+
+> [!NOTE]
+> Benim bilgisayarımda CUDA sürümü 12.4 olduğu için, CUDA 12.4 ile uyumlu PyTorch sürümünü kurdum. Siz de kendi CUDA sürümünüz ile uyumlu olan PyTorch sürümünü indirmeniz gerekiyor. Bilgisayarınızda CUDA yoksa, CPU sürümünü indirebilirsiniz.
+
+> [!NOTE]
+> Kodu çalıştırdığınızda, öncelikle modellerin bilgisayarınıza indirilmesini beklemeniz gerekir. Bu süre, internet hızınıza bağlı olarak değişiklik gösterebilir. Eğer kod yazmak için Sublime Text gibi bir metin editörü kullanıyorsanız, bu indirme 
+> işlemini göremezsiniz. Kodun uzun süre herhangi bir çıktı vermeden çalışması, indirme işlemlerinin devam ediyor olmasından kaynaklanabilir. Ancak, VS Code gibi kod yazma araçlarında terminal kısmında indirme durumu görülebilecektir.
+<br><br>
+
+
 ## 1. Veri Seti Bulma:
 
 Web trafik loglarını içeren veri setini bulmak için çeşitli kaynaklardan faydalandım. Bu kapsamda, Kaggle'da bulduğumuz ve Apache web sunucusu loglarını içeren veri setini tercih ettim. Bu veri seti, çeşitli log girdilerini kapsamlı bir şekilde içermektedir ve proje için uygun nitelikte verilere sahiptir.
