@@ -32,8 +32,8 @@ pip3 install torch torchvision torchaudio --index-url https://download.pytorch.o
 > işlemini göremezsiniz. Kodun uzun süre herhangi bir çıktı vermeden çalışması, indirme işlemlerinin devam ediyor olmasından kaynaklanabilir. Ancak, VS Code gibi kod yazma araçlarında terminal kısmında indirme durumu görülebilecektir.
 
 > [!NOTE]
-> Hem main.py hem de local.py dosyaları için bir Hugging Face API anahtarına ihtiyacınız var. Bunun için Hugging Face sitesine giriş yaptıktan sonra, sağ üst köşeden profilinize tıklayın, ardından Settings seçeneğine gidin ve Access Tokens 
-> kısmına geçin. Gelen ekranda Create new token butonuna tıklayarak yeni bir token oluşturabilirsiniz. Bu token'ı kod içerisinde şu şekilde kullanmalısınız:
+> Hem main.py hem de local.py dosyaları için bir Hugging Face API anahtarına ihtiyacınız var. Bunun için [Hugging Face](https://huggingface.co/) sitesine giriş yaptıktan sonra, sağ üst köşeden profilinize tıklayın, ardından Settings seçeneğine 
+> gidin ve [Access Tokens](https://huggingface.co/settings/tokens) kısmına geçin. Gelen ekranda Create new token butonuna tıklayarak yeni bir token oluşturabilirsiniz. Bu token'ı kod içerisinde şu şekilde kullanmalısınız:
 > ``` os.environ["HUGGINGFACEHUB_API_TOKEN"] = " "``` 
 <br><br>
 
