@@ -112,7 +112,7 @@ Veri setini bu hale getirerek gereksiz verileri temizledim ve RAG yapısında g�
 
 ****
 
-## 3. Sistemin Kurulumu
+## 3. Sistemin Kurulumu:
 
 RAG (Retrieval-Augmented Generation) iki ana yapıdan oluşur: Retrieval (Bilgi Getirme) ve Generation (Üretim).
 
@@ -177,7 +177,7 @@ llm = HuggingFaceHub(repo_id="google/flan-t5-large", model_kwargs={"temperature"
 Embedding kısmında yine ücretsiz ve kurulumu kolay olan HuggingFaceEmbeddings’i kullanmaya karar verdim. Bu sayede, projeyi kullanacak diğer insanlar için de pratik bir çözüm sunmuş oldum.
 <br><br>
 
-### 3.4 RAG Yapısının Çalıştırılması
+### 3.4 RAG Yapısının Çalıştırılması:
 
 RAG yapısını çalıştırmak için öncelikle öncelikle veriler lokalde saklandıysa, localdeki verileri vektör veri setlerinin yüklenmesi gerekiyor:
 
@@ -211,7 +211,7 @@ chainSim.invoke(question)
 > vektör veritabanını silin, verileri tekrar işleyin ve yeniden kaydedin.
 <br><br>
 
-## 4. Değerlendirme.
+## 4. Değerlendirme:
 
 Veri setini bulduktan, veriyi hazırladıktan ve RAG yapısını kurduktan sonra, en zorlu ve zaman alıcı aşama bu RAG yapısının doğruluğunu test etmek, yani ürettiği sonuçların ne kadar doğru ve ne kadar yanlış olduğunu belirlemektir.
 
