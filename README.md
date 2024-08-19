@@ -6,10 +6,10 @@ Bu proje, Retrieval-Augmented Generation (RAG) yapısının nasıl kurulacağın
 
 ***main.py***
 ```
-* pip install langchain-community==0.2.12
-* pip install langchain==0.2.14
-* pip install user-agents==2.2.0
-* pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu124
+pip install langchain-community==0.2.12
+pip install langchain==0.2.14
+pip install user-agents==2.2.0
+pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu124
 ```
 > [!NOTE]
 > Benim bilgisayarımda CUDA sürümü 12.4 olduğu için, CUDA 12.4 ile uyumlu PyTorch sürümünü kurdum. Siz de kendi CUDA sürümünüz ile uyumlu olan PyTorch sürümünü indirmeniz gerekiyor. Bilgisayarınızda CUDA yoksa, CPU sürümünü indirebilirsiniz.
@@ -17,12 +17,12 @@ Bu proje, Retrieval-Augmented Generation (RAG) yapısının nasıl kurulacağın
 
 ***local.py***
 ```
-* pip install transformers==4.44.0
-* pip install langchain==0.2.14
-* pip install user-agents==2.2.0
-* pip install langchain-huggingface==0.0.3
-* pip install langchain-community==0.2.12
-* pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu124
+pip install transformers==4.44.0
+pip install langchain==0.2.14
+pip install user-agents==2.2.0
+pip install langchain-huggingface==0.0.3
+pip install langchain-community==0.2.12
+pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu124
 ```
 > [!NOTE]
 > Benim bilgisayarımda CUDA sürümü 12.4 olduğu için, CUDA 12.4 ile uyumlu PyTorch sürümünü kurdum. Siz de kendi CUDA sürümünüz ile uyumlu olan PyTorch sürümünü indirmeniz gerekiyor. Bilgisayarınızda CUDA yoksa, CPU sürümünü indirebilirsiniz.
