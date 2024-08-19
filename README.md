@@ -5,23 +5,25 @@ Bu proje, Retrieval-Augmented Generation (RAG) yapısının nasıl kurulacağın
 # 0. Gerekli kurulumlar.
 
 ***main.py***
+```
 * pip install langchain-community==0.2.12
 * pip install langchain==0.2.14
 * pip install user-agents==2.2.0
 * pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu124
-
+```
 > [!NOTE]
 > Benim bilgisayarımda CUDA sürümü 12.4 olduğu için, CUDA 12.4 ile uyumlu PyTorch sürümünü kurdum. Siz de kendi CUDA sürümünüz ile uyumlu olan PyTorch sürümünü indirmeniz gerekiyor. Bilgisayarınızda CUDA yoksa, CPU sürümünü indirebilirsiniz.
 <br><br>
 
 ***local.py***
+```
 * pip install transformers==4.44.0
 * pip install langchain==0.2.14
 * pip install user-agents==2.2.0
 * pip install langchain-huggingface==0.0.3
 * pip install langchain-community==0.2.12
 * pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu124
-
+```
 > [!NOTE]
 > Benim bilgisayarımda CUDA sürümü 12.4 olduğu için, CUDA 12.4 ile uyumlu PyTorch sürümünü kurdum. Siz de kendi CUDA sürümünüz ile uyumlu olan PyTorch sürümünü indirmeniz gerekiyor. Bilgisayarınızda CUDA yoksa, CPU sürümünü indirebilirsiniz.
 
@@ -30,7 +32,7 @@ Bu proje, Retrieval-Augmented Generation (RAG) yapısının nasıl kurulacağın
 > işlemini göremezsiniz. Kodun uzun süre herhangi bir çıktı vermeden çalışması, indirme işlemlerinin devam ediyor olmasından kaynaklanabilir. Ancak, VS Code gibi kod yazma araçlarında terminal kısmında indirme durumu görülebilecektir.
 <br><br>
 
-
+---
 ## 1. Veri Seti Bulma:
 
 Web trafik loglarını içeren veri setini bulmak için çeşitli kaynaklardan faydalandım. Bu kapsamda, Kaggle'da bulduğumuz ve Apache web sunucusu loglarını içeren veri setini tercih ettim. Bu veri seti, çeşitli log girdilerini kapsamlı bir şekilde içermektedir ve proje için uygun nitelikte verilere sahiptir.
