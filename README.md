@@ -25,17 +25,17 @@ pip install langchain-community==0.2.12
 pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu124
 ```
 > [!NOTE]
+> Hem main.py hem de local.py dosyaları için bir Hugging Face API anahtarına ihtiyacınız var. Bunun için [Hugging Face](https://huggingface.co/) sitesine giriş yaptıktan sonra, sağ üst köşeden profilinize tıklayın, ardından Settings seçeneğine 
+> gidin ve [Access Tokens](https://huggingface.co/settings/tokens) kısmına geçin. Gelen ekranda Create new token butonuna tıklayarak yeni bir token oluşturabilirsiniz. Bu token'ı kod içerisinde şu şekilde kullanmalısınız:
+> 
+> ``` os.environ["HUGGINGFACEHUB_API_TOKEN"] = " "```
+
+> [!NOTE]
 > Benim bilgisayarımda CUDA sürümü 12.4 olduğu için, CUDA 12.4 ile uyumlu PyTorch sürümünü kurdum. Siz de kendi CUDA sürümünüz ile uyumlu olan PyTorch sürümünü indirmeniz gerekiyor. Bilgisayarınızda CUDA yoksa, CPU sürümünü indirebilirsiniz.
 
 > [!NOTE]
 > Kodu çalıştırdığınızda, öncelikle modellerin bilgisayarınıza indirilmesini beklemeniz gerekir. Bu süre, internet hızınıza bağlı olarak değişiklik gösterebilir. Eğer kod yazmak için Sublime Text gibi bir metin editörü kullanıyorsanız, bu indirme 
 > işlemini göremezsiniz. Kodun uzun süre herhangi bir çıktı vermeden çalışması, indirme işlemlerinin devam ediyor olmasından kaynaklanabilir. Ancak, VS Code gibi kod yazma araçlarında terminal kısmında indirme durumu görülebilecektir.
-
-> [!NOTE]
-> Hem main.py hem de local.py dosyaları için bir Hugging Face API anahtarına ihtiyacınız var. Bunun için [Hugging Face](https://huggingface.co/) sitesine giriş yaptıktan sonra, sağ üst köşeden profilinize tıklayın, ardından Settings seçeneğine 
-> gidin ve [Access Tokens](https://huggingface.co/settings/tokens) kısmına geçin. Gelen ekranda Create new token butonuna tıklayarak yeni bir token oluşturabilirsiniz. Bu token'ı kod içerisinde şu şekilde kullanmalısınız:
-> 
-> ``` os.environ["HUGGINGFACEHUB_API_TOKEN"] = " "``` 
 <br><br>
 
 ---
