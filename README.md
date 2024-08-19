@@ -11,9 +11,7 @@ pip install langchain==0.2.14
 pip install user-agents==2.2.0
 pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu124
 ```
-> [!NOTE]
-> Benim bilgisayarımda CUDA sürümü 12.4 olduğu için, CUDA 12.4 ile uyumlu PyTorch sürümünü kurdum. Siz de kendi CUDA sürümünüz ile uyumlu olan PyTorch sürümünü indirmeniz gerekiyor. Bilgisayarınızda CUDA yoksa, CPU sürümünü indirebilirsiniz.
-<br><br>
+***
 
 ***local.py***
 ```
