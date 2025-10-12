@@ -174,7 +174,7 @@ Sonuç olarak, performans ve erişilebilirlik açısından en uygun model olarak
 ```
 from langchain_community.llms import HuggingFaceHub
 
-os.environ["HUGGINGFACEHUB_API_TOKEN"] = "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"
+os.environ["HUGGINGFACEHUB_API_TOKEN"] = "hf_xxxxxxx"
 
 llm = HuggingFaceHub(repo_id="google/flan-t5-large", model_kwargs={"temperature": 0.7, "max_length": 512})
 ```
